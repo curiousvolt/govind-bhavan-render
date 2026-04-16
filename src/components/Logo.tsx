@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../utils/cn';
+import logoSvg from '../gemini-svg.svg';
 
 interface LogoProps {
   className?: string;
@@ -22,8 +23,8 @@ export const Logo = ({ className, size = 'md' }: LogoProps) => {
         className
       )}
       style={{
-        maskImage: "url('/src/gemini-svg.svg')",
-        WebkitMaskImage: "url('/src/gemini-svg.svg')",
+        maskImage: `url(${logoSvg})`,
+        WebkitMaskImage: `url(${logoSvg})`,
         maskRepeat: 'no-repeat',
         WebkitMaskRepeat: 'no-repeat',
         maskPosition: 'center',
