@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Utensils, Coffee, Moon, Dumbbell, Trophy, BookOpen, Users, Medal, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Utensils, Coffee, Moon, Dumbbell, Trophy, BookOpen, Users, Medal, ThumbsUp, ThumbsDown, Shirt } from 'lucide-react';
 import { FacilityCard } from '../components/FacilityCard';
 import { FadeIn } from '../components/FadeIn';
 import { cn } from '../utils/cn';
@@ -18,17 +18,18 @@ export const Facilities = () => {
     { id: 'canteen', label: 'Canteens', icon: Coffee },
     { id: 'sports', label: 'Sports & Gym', icon: Trophy },
     { id: 'study', label: 'Study & Common', icon: BookOpen },
+    { id: 'laundry', label: 'Laundry', icon: Shirt },
   ];
 
   const galleryFilters = ['All', 'Sports', 'Cultural', 'Events'];
   
   const galleryImages = [
-    { src: 'https://picsum.photos/600/400?random=30', category: 'Sports', title: 'Inter-Bhawan Cricket Champions' },
-    { src: 'https://picsum.photos/400/600?random=31', category: 'Cultural', title: 'Diwali Celebration 2024' },
-    { src: 'https://picsum.photos/600/600?random=32', category: 'Events', title: 'Alumni Meet' },
-    { src: 'https://picsum.photos/400/400?random=33', category: 'Sports', title: 'Volleyball Tournament' },
-    { src: 'https://picsum.photos/600/400?random=34', category: 'Cultural', title: "Fresher's Party" },
-    { src: 'https://picsum.photos/400/600?random=35', category: 'Sports', title: 'Athletics Meet' },
+    { src: '/images/bhavanday1.jpg', category: 'Events', title: 'Bhavan Day Celebrations' },
+    { src: '/images/bhavanday2.jpg', category: 'Cultural', title: 'Cultural Night' },
+    { src: '/images/bhavanday3.jpg', category: 'Sports', title: 'Inter-Bhawan Sports' },
+    { src: '/images/bhavanday4.jpg', category: 'Events', title: 'Traditional Day' },
+    { src: '/images/bhavanday5.webp', category: 'Cultural', title: 'Festival Celebrations' },
+    { src: '/images/main.jpg', category: 'Events', title: 'Bhawan Heritage' },
   ];
 
   const filteredGallery = activeGalleryFilter === 'All' 
@@ -93,8 +94,8 @@ export const Facilities = () => {
                   title="Main Mess" 
                   description="Spacious dining hall serving nutritious meals four times a day. Features a diverse menu catering to different regional tastes."
                   icon={Utensils}
-                  timing="Breakfast: 7:30-9:30 AM | Lunch: 12:30-2:30 PM | Dinner: 7:30-9:30 PM"
-                  image="https://picsum.photos/seed/mess/800/400"
+                  timing="Breakfast: 7:30-9:30 AM | Lunch: 12:45-2:30 PM | Dinner: 7:30-9:15 PM"
+                  image="/images/mess.jpg"
                 />
                 <div className="bg-white dark:bg-[#1e1e1e] rounded-3xl p-8 border border-gray-100 dark:border-white/5 shadow-sm">
                   <div className="flex items-center justify-between mb-6">
@@ -146,23 +147,31 @@ export const Facilities = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
               >
                 <FacilityCard 
                   title="Day Canteen" 
                   description="Perfect spot for quick bites between classes. Offers a variety of snacks, beverages, and light meals."
                   icon={Coffee}
-                  timing="8:00 AM - 10:00 PM"
-                  image="https://picsum.photos/seed/canteen/800/400"
+                  timing="2:00 PM - 2:00 AM"
+                  image="/images/day-canteen.jpg"
                   delay={0.1}
                 />
                 <FacilityCard 
                   title="Night Canteen" 
                   description="Your savior during late-night study sessions. Serves hot noodles, parathas, sandwiches, and beverages."
                   icon={Moon}
-                  timing="10:00 PM - 2:00 AM"
-                  image="https://picsum.photos/seed/nightcanteen/800/400"
+                  timing="2:00 AM - 2:00 PM"
+                  image="/images/night-canteen.jpg"
                   delay={0.2}
+                />
+                <FacilityCard 
+                  title="Juice Shop" 
+                  description="Refreshing and healthy. Serves a wide range of fresh fruit juices and shakes to keep you hydrated and energized."
+                  icon={Coffee}
+                  timing="10:00 AM - 10:00 PM"
+                  image="/images/juice-shop.png"
+                  delay={0.3}
                 />
               </motion.div>
             )}
@@ -181,6 +190,7 @@ export const Facilities = () => {
                   description="Fully equipped modern gym with cardio machines, free weights, and strength training equipment."
                   icon={Dumbbell}
                   timing="6:00 AM - 9:00 PM"
+                  image="/images/gymnasium.png"
                   delay={0.1}
                 />
                 <FacilityCard 
@@ -188,13 +198,15 @@ export const Facilities = () => {
                   description="Facilities for Table Tennis, Badminton, Chess, and Carrom. Equipment available at the sports room."
                   icon={Trophy}
                   timing="24/7 Access"
+                  image="/images/indoor-games.jpg"
                   delay={0.2}
                 />
                 <FacilityCard 
                   title="Outdoor Courts" 
-                  description="Well-maintained Basketball and Volleyball courts with floodlights for evening play."
+                  description="Well-maintained Badminton and Volleyball courts with floodlights for evening play."
                   icon={Users}
-                  timing="6:00 AM - 10:00 PM"
+                  timing="24/7 Access"
+                  image="/images/badminton-court.webp"
                   delay={0.3}
                 />
               </motion.div>
@@ -214,7 +226,7 @@ export const Facilities = () => {
                   description="Two air-conditioned, quiet study rooms with comfortable seating and high-speed Wi-Fi. Capacity of 20 students each."
                   icon={BookOpen}
                   timing="24/7 Access"
-                  image="https://picsum.photos/seed/study/800/400"
+                  image="/images/study-room.jpg"
                   delay={0.1}
                 />
                 <FacilityCard 
@@ -222,9 +234,49 @@ export const Facilities = () => {
                   description="Relaxation area with a large TV, comfortable sofas, daily newspapers, and magazines."
                   icon={Users}
                   timing="8:00 AM - 12:00 AM"
-                  image="https://picsum.photos/seed/common/800/400"
+                  image="/images/tv-room.jpg"
                   delay={0.2}
                 />
+              </motion.div>
+            )}
+
+            {activeTab === 'laundry' && (
+              <motion.div
+                key="laundry"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              >
+                <FacilityCard 
+                  title="Laundry Service" 
+                  description="Professional laundry and dry cleaning services available for all residents. Quick turnaround time with doorstep pickup."
+                  icon={Shirt}
+                  timing="9:00 AM - 6:00 PM"
+                  image="/images/laundry.jpg"
+                  delay={0.1}
+                />
+                <div className="bg-white dark:bg-[#1e1e1e] rounded-3xl p-8 border border-gray-100 dark:border-white/5 shadow-sm flex flex-col justify-center">
+                  <h3 className="text-xl font-serif font-medium text-gray-900 dark:text-white mb-4">Quick Service</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    Our in-house laundry facility ensures that residents have access to clean, well-maintained clothing throughout the semester. We use industrial-grade machines and premium detergents for the best results.
+                  </p>
+                  <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                      Wash & Fold: 24h Turnaround
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                      Ironing Services
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                      Dry Cleaning for Formals
+                    </li>
+                  </ul>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

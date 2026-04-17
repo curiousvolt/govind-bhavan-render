@@ -50,7 +50,7 @@ export const Home = () => {
               {/* Decorative border offset */}
               <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-full h-full border border-primary-500/30 rounded-[1.5rem] md:rounded-[2.5rem] -z-10" />
               <img 
-                src="https://picsum.photos/800/800?random=10" 
+                src="/images/main.jpg" 
                 alt="Govind Bhawan Heritage" 
                 className="w-full h-auto rounded-[1.5rem] md:rounded-[2rem] object-cover shadow-2xl relative z-10"
               />
@@ -125,14 +125,14 @@ export const Home = () => {
               </div>
               <div className="grid grid-cols-2 gap-4 md:gap-8">
                 <div className="col-span-1">
-                  <img src="https://picsum.photos/800/1000?random=11" alt="Life 1" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
+                  <img src="/images/bhavanday1.jpg" alt="Bhavan Day 1" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
                 </div>
                 <div className="col-span-1 flex flex-col gap-4 md:gap-8">
                   <div className="h-1/2">
-                    <img src="https://picsum.photos/800/600?random=12" alt="Life 2" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
+                    <img src="/images/bhavanday2.jpg" alt="Bhavan Day 2" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
                   </div>
                   <div className="h-1/2">
-                    <img src="https://picsum.photos/800/600?random=13" alt="Life 3" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
+                    <img src="/images/bhavanday3.jpg" alt="Bhavan Day 3" className="w-full h-full object-cover rounded-[1.5rem] md:rounded-[2rem] shadow-lg" />
                   </div>
                 </div>
               </div>

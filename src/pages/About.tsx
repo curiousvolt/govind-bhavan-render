@@ -2,21 +2,98 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone } from 'lucide-react';
 import { FadeIn } from '../components/FadeIn';
+import { cn } from '../utils/cn';
 
 export const About = () => {
-  const team = [
-    { name: "Raunak Kumar",      role: "BHAWAN SECRETARY",      img: "https://picsum.photos/200/200?random=40", email: "raunak@iitr.ac.in",    phone: "+91 9876543210" },
-    { name: "Yash Gehlot",       role: "MESS SECRETARY",         img: "https://picsum.photos/200/200?random=41", email: "yash@iitr.ac.in",      phone: "+91 9876543211" },
-    { name: "Abhishek Mittal",   role: "MAINTENANCE SECRETARY",  img: "https://picsum.photos/200/200?random=42", email: "abhishek@iitr.ac.in",  phone: "+91 9876543212" },
-    { name: "Lakshay Data",      role: "TECHNICAL SECRETARY",    img: "https://picsum.photos/200/200?random=43", email: "lakshay@iitr.ac.in",   phone: "+91 9876543213" },
-    { name: "Dinesh Choudhary",  role: "SPORTS SECRETARY",       img: "https://picsum.photos/200/200?random=44", email: "dinesh@iitr.ac.in",    phone: "+91 9876543214" },
-    { name: "Aditya Verma",      role: "WELLNESS SECRETARY",     img: "https://picsum.photos/200/200?random=45", email: "aditya@iitr.ac.in",    phone: "+91 9876543215" },
-    { name: "Mahendra Prajapati",role: "CULTURAL SECRETARY",     img: "https://picsum.photos/200/200?random=46", email: "mahendra@iitr.ac.in",  phone: "+91 9876543216" },
+  const adminTeam = [
+    { 
+      name: "Bishnu Prasad Das", 
+      role: "CHIEF WARDEN", 
+      img: "/images/people/chiefwardern.jpg", 
+      email: "bishnu.das@ece.iitr.ac.in", 
+      phone: "+91 1332 284798" 
+    },
+    { 
+      name: "Neetesh Kumar", 
+      role: "WARDEN", 
+      img: "/images/people/warden.jpg", 
+      email: "neetesh@cs.iitr.ac.in", 
+      phone: "+91 1332 284997" 
+    },
+    { 
+      name: "Ayush Kumar", 
+      role: "ASSISTANT WARDEN", 
+      img: "/images/people/ayush_assitantwardern.jpg",
+      email: "ayush@iitr.ac.in", // Placeholder as not provided
+      phone: "N/A"
+    },
+    { 
+      name: "Nitish Kumar", 
+      role: "ASSISTANT WARDEN", 
+      img: "/images/people/nitish_assistantwarden.jpg",
+      email: "nitish@iitr.ac.in", // Placeholder as not provided
+      phone: "N/A"
+    },
+    { 
+      name: "Supervisor", 
+      role: "BHAWAN SUPERVISOR", 
+      img: "/images/people/supervisor.jpeg", 
+      email: "govindbhavan@iitr.ac.in", 
+      phone: "8859409313" 
+    },
   ];
+
+  const team = [
+    { name: "Raunak Kumar",      role: "BHAWAN SECRETARY",      img: "/images/people/raunak.jpg", email: "raunak@iitr.ac.in",    phone: "+91 8279864227" },
+    { name: "Yash Gehlot",       role: "MESS SECRETARY",         img: "/images/people/yashgehlot.jpg", email: "yash@iitr.ac.in",      phone: "+91 8005886915" },
+    { name: "Abhishek Mittal",   role: "MAINTENANCE SECRETARY",  img: "/images/people/abhishek_mittal.jpg", email: "abhishek@iitr.ac.in",  phone: "+91 9721865917" },
+    { name: "Lakshay Data",      role: "TECHNICAL SECRETARY",    img: "/images/people/lakshay.jpg", email: "lakshay@iitr.ac.in",   phone: "+91 9416550600" },
+    { name: "Dinesh Choudhary",  role: "SPORTS SECRETARY",       img: "/images/people/dinesh.jpg", email: "dinesh@iitr.ac.in",    phone: "+91 9588914616" },
+    { name: "Aditya Verma",      role: "WELLNESS SECRETARY",     img: "/images/people/aditya.jpg", email: "aditya@iitr.ac.in",    phone: "+91 8433246830" },
+    { name: "Mahendra Prajapati",role: "CULTURAL SECRETARY",     img: "/images/people/mahendra.jpg", email: "mahendra@iitr.ac.in",  phone: "+91 8824147055" },
+  ];
+
+  const MemberCard = ({ member, i, size = 'sm' }: { member: any, i: number, size?: 'sm' | 'lg' }) => (
+    <div key={i}>
+      <FadeIn delay={i * 0.05}>
+        <div className="group relative bg-white dark:bg-[#1e1e1e] p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm flex flex-col items-center text-center overflow-hidden">
+          <img 
+            src={member.img} 
+            alt={member.name} 
+            className={cn(
+              "rounded-full object-cover mb-4 ring-4 ring-gray-50 dark:ring-white/5 transition-transform duration-500 group-hover:scale-110",
+              size === 'lg' ? "w-24 h-24" : "w-20 h-20"
+            )} 
+          />
+          <h4 className={cn("font-bold text-gray-900 dark:text-white", size === 'lg' ? "text-lg" : "text-base")}>{member.name}</h4>
+          <span className="text-xs font-mono text-primary-600 dark:text-primary-400 mt-2 uppercase tracking-wider">{member.role}</span>
+          
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-white/95 dark:bg-[#1e1e1e]/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <h4 className="font-bold text-gray-900 dark:text-white mb-4">{member.name}</h4>
+            <div className="space-y-3 w-full">
+              {member.email && (
+                <a href={`mailto:${member.email}`} className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <Mail size={16} />
+                  <span className="truncate">{member.email}</span>
+                </a>
+              )}
+              {member.phone && member.phone !== 'N/A' && (
+                <a href={`tel:${member.phone}`} className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                  <Phone size={16} />
+                  <span>{member.phone}</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  );
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-[#fafafa] dark:bg-[#161616]">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         
         {/* Intro */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-32">
@@ -120,21 +197,19 @@ export const About = () => {
               <p className="text-gray-500 dark:text-gray-400">Meet the team dedicated to your welfare.</p>
             </div>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <FadeIn delay={0.1}>
-              <div className="bg-white dark:bg-[#1e1e1e] p-8 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm flex flex-col items-center text-center">
-                <img src="https://picsum.photos/200/200?random=20" alt="Chief Warden" className="w-24 h-24 rounded-full object-cover mb-4 ring-4 ring-primary-50 dark:ring-primary-900/20" />
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Bishnu Prasad Das</h3>
-                <span className="text-xs font-mono text-primary-600 dark:text-primary-400 mt-1 uppercase tracking-wider">Chief Warden</span>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="bg-white dark:bg-[#1e1e1e] p-8 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm flex flex-col items-center text-center">
-                <img src="https://picsum.photos/200/200?random=21" alt="Warden" className="w-24 h-24 rounded-full object-cover mb-4 ring-4 ring-primary-50 dark:ring-primary-900/20" />
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">Neetesh Kumar</h3>
-                <span className="text-xs font-mono text-primary-600 dark:text-primary-400 mt-1 uppercase tracking-wider">Warden</span>
-              </div>
-            </FadeIn>
+          
+          {/* Chief Warden - Top Center */}
+          <div className="flex justify-center mb-12">
+            <div className="w-full max-w-sm">
+              <MemberCard member={adminTeam[0]} i={0} size="lg" />
+            </div>
+          </div>
+
+          {/* Other Admin Members - Grid below */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {adminTeam.slice(1).map((member, i) => (
+              <MemberCard key={i+1} member={member} i={i+1} size="lg" />
+            ))}
           </div>
         </section>
 
@@ -148,30 +223,7 @@ export const About = () => {
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {team.map((member, i) => (
-              <div key={i}>
-                <FadeIn delay={i * 0.05}>
-                  <div className="group relative bg-white dark:bg-[#1e1e1e] p-6 rounded-2xl border border-gray-100 dark:border-white/5 shadow-sm flex flex-col items-center text-center overflow-hidden">
-                    <img src={member.img} alt={member.name} className="w-20 h-20 rounded-full object-cover mb-4 ring-4 ring-gray-50 dark:ring-white/5 transition-transform duration-500 group-hover:scale-110" />
-                    <h4 className="font-bold text-gray-900 dark:text-white">{member.name}</h4>
-                    <span className="text-xs font-mono text-primary-600 dark:text-primary-400 mt-2 uppercase tracking-wider">{member.role}</span>
-                    
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-white/95 dark:bg-[#1e1e1e]/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
-                      <h4 className="font-bold text-gray-900 dark:text-white mb-4">{member.name}</h4>
-                      <div className="space-y-3 w-full">
-                        <a href={`mailto:${member.email}`} className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                          <Mail size={16} />
-                          <span className="truncate">{member.email}</span>
-                        </a>
-                        <a href={`tel:${member.phone}`} className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                          <Phone size={16} />
-                          <span>{member.phone}</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              </div>
+              <MemberCard key={i} member={member} i={i} />
             ))}
           </div>
         </section>
